@@ -1,4 +1,4 @@
-#Simple Neuron
+#Simple Neural Network
 import numpy as np
 ###########LEARNING############
 
@@ -27,17 +27,20 @@ def tuneWeights(weights,error,output):
 #PROGRAM###########################################
 
 #Desired Value (could be anything)
-target = 0.8
+target = 1
 #Inputs
 inputs = [np.random.randn(),np.random.randn()]
 #Weights
 weights = [np.random.randn(),np.random.randn()]
+#Number of Iterations
+iterations = 100
 
 #Processes the Neuron once and prints result
-for i in range(60):
+print("Target: ", target)
+for i in range(iterations):
 	output = Neuron(inputs,weights)
-	print("Target: ", target)
 	print("Output: ",output)
 	error = calculateError(output,target)
+	print(weights)
 	print("Error: ", error)
 	tuneWeights(weights,error,output)
