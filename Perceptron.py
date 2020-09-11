@@ -1,5 +1,6 @@
 #Simple Perceptron
 import numpy as np
+import matplotlib.pyplot as plt
 
 #A Neuron with 2 inputs
 def Neuron(inputs,weights):
@@ -15,14 +16,13 @@ def sigmoid(x):
 
 #Calculates the error
 def calculateError(output, target):
-	return target - output
+	res = target - output
+	error.append(res)
 
 def tuneWeights(weights,error,output):
 	for i in range(len(weights)):
-		weights[i] = weights[i] + error * output
+		weights[i] = weights[i] + error[-1] * output#last error value
 	
-
-
 #PROGRAM###########################################
 
 #Desired Value
@@ -31,25 +31,38 @@ target = float(target)
 #Number of Iterations
 iterations = input("Enter number of iterations:\n")
 iterations = int(iterations)
+print("######################################")
 #Neuron's Inputs
 inputs = [np.random.randn(),np.random.randn()]
 #Weights
 weights = [np.random.randn(),np.random.randn()]
+#Graph stuff
+error = []#stores every error value
+it = [0,0]#stores every iterations (from 0 to iterations)
 
 #Processes the Neuron once and prints result
 print("Target Value: ", target)
 print("Number of Iterations: ", target)
 output = Neuron(inputs,weights)
 print("Initial Output: ",output)
-error = calculateError(output,target)
+calculateError(output,target)
 print("Initial Error: ", error)
+print("######################################")
 
 print("Processing...")
 
 for i in range(iterations):
 	output = Neuron(inputs,weights)
+	calculateError(output,target)
 	tuneWeights(weights,error,output)
+	it.append(i)
+
 #Final Results
 print("Final Output: ",output)
-error = calculateError(output,target)
-print("Final Error: ", error)
+calculateError(output,target)
+print("Final Error: ", error[-1])
+print("######################################")
+print("Plotting Results...")
+
+plt.plot(it, error)
+plt.show()
