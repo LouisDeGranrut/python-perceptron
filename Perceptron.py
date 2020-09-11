@@ -27,7 +27,7 @@ def tuneWeights(weights,error,output):
 
 #Desired Value
 target = input("Enter target Value:\n")
-target = int(target)
+target = float(target)
 #Number of Iterations
 iterations = input("Enter number of iterations:\n")
 iterations = int(iterations)
