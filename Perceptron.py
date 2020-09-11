@@ -1,6 +1,5 @@
-#Simple Neural Network
+#Simple Perceptron
 import numpy as np
-###########LEARNING############
 
 #A Neuron with 2 inputs
 def Neuron(inputs,weights):
@@ -50,6 +49,7 @@ print("Processing...")
 for i in range(iterations):
 	output = Neuron(inputs,weights)
 	tuneWeights(weights,error,output)
+#Final Results
 print("Final Output: ",output)
 error = calculateError(output,target)
 print("Final Error: ", error)
