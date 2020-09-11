@@ -27,13 +27,15 @@ def tuneWeights(weights,error,output):
 #PROGRAM###########################################
 
 #Desired Value (could be anything)
-target = 1
+target = input("Enter target Value:\n")
+target = int(target)
 #Inputs
 inputs = [np.random.randn(),np.random.randn()]
 #Weights
 weights = [np.random.randn(),np.random.randn()]
 #Number of Iterations
-iterations = 100
+iterations = input("Enter number of iterations:\n")
+iterations = int(iterations)
 
 #Processes the Neuron once and prints result
 print("Target: ", target)
